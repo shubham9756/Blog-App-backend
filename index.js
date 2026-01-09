@@ -10,14 +10,14 @@
 
   const app = express();
 
-  connectDb("mongodb://localhost:27017/blogApp")
+  connectDb("mongodb+srv://shubhamKarad:<Karad@9756>@cluster0.xpthkav.mongodb.net/")
   app.use(express.json());
 
   app.use(bodyParser.urlencoded({ extended: true }));
 
   // Middleware setup
   app.use(cors({
-    origin: "http://localhost:5173"  ,
+    origin: "https://blog-app-git-main-shubham-karad-s-projects.vercel.app/blogs"  ,
     credentials: true
   }));
 
