@@ -4,20 +4,22 @@
   const session = require("express-session");
   const cors = require('cors');
   const connectDb = require("./connection")
+  require('dotenv').config();
 
   const User = require('./Routes/user');
   const Admin = require('./Routes/admin');
 
   const app = express();
 
-  connectDb("mongodb+srv://shubhamKarad:<Karad@9756>@cluster0.xpthkav.mongodb.net/")
+  connectDb(process.env.MONGO_URL);
+
   app.use(express.json());
 
   app.use(bodyParser.urlencoded({ extended: true }));
 
   // Middleware setup
   app.use(cors({
-    origin: "https://blog-app-git-main-shubham-karad-s-projects.vercel.app/blogs"  ,
+    origin: process.env.FRONTEND_URL,
     credentials: true
   }));
 
