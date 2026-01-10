@@ -116,13 +116,14 @@ const handleLogin = async (req, res) => {
             { expiresIn: "10d" }
         );
 
-        res.cookie("token", token, {
-            httpOnly: true,
-            sameSite: "lax",
-            maxAge: 10 * 24 * 60 * 60 * 1000,
-            secure: false,
-            path: "/"
-        });
+       res.cookie("token", token, {
+  httpOnly: true,
+  sameSite: "none",   // MUST for cross-domain
+  secure: true,       // MUST for HTTPS (Vercel)
+  maxAge: 10 * 24 * 60 * 60 * 1000,
+  path: "/"
+});
+
 
         res.json({
             success: true,
