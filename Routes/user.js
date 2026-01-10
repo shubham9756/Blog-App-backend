@@ -15,7 +15,7 @@ router.post("/blogs", verifyAuth, upload.single("thumbnail"), handleBlogs);
 
 router.get("/logout",verifyAuth, handleLogout);
 
-router.get("/blogs",verifyAuth,sendBlogs)
+router.get("/blogs",sendBlogs)
 
 router.get("/viewBlog/:id",verifyAuth,HandleViewBlog);
 
